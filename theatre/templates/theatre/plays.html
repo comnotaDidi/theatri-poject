@@ -1,0 +1,29 @@
+{% extends 'theatre/base.html' %}
+
+{% block title %}Спектакли{% endblock %}
+
+{% block content %}
+<section class="plays">
+    <h2>Афиша спектаклей</h2>
+    <div class="play-grid" id="plays-container">
+        <!-- Карточки спектаклей загружаются тут -->
+    </div>
+</section>
+
+<script>
+    fetch('/api/plays/')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('plays-container');
+            data.forEach(play => {
+                const card = document.createElement('div');
+                card.className = 'play-card';
+                card.innerHTML = `
+                    <h3>${play.title}</h3>
+                    <p>${play.description}</p>
+                `;
+                container.appendChild(card);
+            });
+        });
+</script>
+{% endblock %}

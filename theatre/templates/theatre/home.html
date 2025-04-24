@@ -1,0 +1,182 @@
+{% extends 'theatre/base.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+
+<!-- ===== Верхний Слайдер ===== -->
+<div class="hero-slider">
+    <div class="slides-wrapper top-slides">
+        <div class="slide" style="background-image: url('{% static 'image/slide1.webp' %}');"></div>
+        <div class="slide" style="background-image: url('{% static 'image/slide2.webp' %}');"></div>
+        <div class="slide" style="background-image: url('{% static 'image/slide3.webp' %}');"></div>
+    </div>
+
+    <div class="hero-text">
+        <h2>Добро пожаловать в Театр</h2>
+        <p>Откройте для себя мир искусства, драмы и вдохновения.</p>
+    </div>
+
+    <div class="slider-arrow left top-arrow">&#10094;</div>
+    <div class="slider-arrow right top-arrow">&#10095;</div>
+</div>
+
+<!-- ===== БАННЕР ФОН + НОВОСТИ ===== -->
+<section class="news-banner" style="background-image: url('{% static 'image/featured-bg.webp' %}');">
+    <div class="news-banner-overlay"></div>
+
+    <div class="news-banner-inner">
+        <div class="news-column left">
+            <h2>PLATFORMA VOD TEATRU WIELKIEGO</h2>
+            <p>Лучшие балетные и оперные спектакли онлайн — бесплатно</p>
+        </div>
+
+        <div class="news-carousel-wrapper">
+            <div class="news-carousel" id="news-carousel">
+                <div class="news-slide">
+                    <div class="news-date"><div class="day">05</div><span class="month">марта</span><span class="year">2025</span></div>
+                    <div class="news-content"><h3>По концерте Ukrainian Freedom Orchestra</h3><p>Концерт к 3-й годовщине войны. UFO тур летом 2025, подробности скоро.</p><a href="#" class="btn-news">Подробнее</a></div>
+                </div>
+                <div class="news-slide">
+                    <div class="news-date"><div class="day">03</div><span class="month">марта</span><span class="year">2025</span></div>
+                    <div class="news-content"><h3>Аphkhazeti в TW-ON</h3><p>Грузинский балет с оркестром и хором — 10 марта.</p><a href="#" class="btn-news">Подробнее</a></div>
+                </div>
+                <div class="news-slide">
+                    <div class="news-date"><div class="day">25</div><span class="month">февраля</span><span class="year">2025</span></div>
+                    <div class="news-content"><h3>Новый сезон</h3><p>Объявлен репертуар весеннего сезона. Билеты уже в продаже.</p><a href="#" class="btn-news">Подробнее</a></div>
+                </div>
+                <div class="news-slide">
+                    <div class="news-date"><div class="day">18</div><span class="month">февраля</span><span class="year">2025</span></div>
+                    <div class="news-content"><h3>Мастер-классы для студентов</h3><p>Ведущие артисты театра делятся опытом с молодыми талантами.</p><a href="#" class="btn-news">Подробнее</a></div>
+                </div>
+                <div class="news-slide">
+                    <div class="news-date"><div class="day">12</div><span class="month">февраля</span><span class="year">2025</span></div>
+                    <div class="news-content"><h3>Новая постановка «Жизель»</h3><p>Премьера классического балета с современной сценографией.</p><a href="#" class="btn-news">Подробнее</a></div>
+                </div>
+            </div>
+
+            <!-- Стрелки -->
+            <div class="news-arrow left" id="news-prev">&#10094;</div>
+            <div class="news-arrow right" id="news-next">&#10095;</div>
+        </div>
+
+        <div class="news-column right">
+            <h2>KUP PROGRAM ELEKTRONICZNY</h2>
+            <p>Программы доступны в форматах EPUB и PDF</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CSS ===== -->
+<style>
+    .news-carousel-wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .news-carousel {
+        display: flex;
+        transition: transform 0.5s ease;
+        width: max-content;
+    }
+
+    .news-slide {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .news-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: white;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .news-arrow.left {
+        left: 0;
+    }
+
+    .news-arrow.right {
+        right: 0;
+    }
+</style>
+
+<!-- ===== JS Слайдеры ===== -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Верхний слайдер
+        const topWrapper = document.querySelector('.top-slides');
+        const topSlides = document.querySelectorAll('.top-slides .slide');
+        const topLeftArrow = document.querySelector('.slider-arrow.left.top-arrow');
+        const topRightArrow = document.querySelector('.slider-arrow.right.top-arrow');
+        let topIndex = 0;
+        let topInterval;
+
+        function showTopSlide() {
+            topWrapper.style.transform = `translateX(-${topIndex * 100}%)`;
+        }
+
+        function nextTopSlide() {
+            topIndex = (topIndex + 1) % topSlides.length;
+            showTopSlide();
+        }
+
+        function prevTopSlide() {
+            topIndex = (topIndex - 1 + topSlides.length) % topSlides.length;
+            showTopSlide();
+        }
+
+        topRightArrow.addEventListener('click', () => {
+            nextTopSlide();
+            resetTopInterval();
+        });
+
+        topLeftArrow.addEventListener('click', () => {
+            prevTopSlide();
+            resetTopInterval();
+        });
+
+        function resetTopInterval() {
+            clearInterval(topInterval);
+            topInterval = setInterval(nextTopSlide, 6000);
+        }
+
+        topInterval = setInterval(nextTopSlide, 6000);
+    });
+
+    // Слайдер новостей
+    document.addEventListener("DOMContentLoaded", () => {
+        const carousel = document.getElementById('news-carousel');
+        const slides = document.querySelectorAll('.news-slide');
+        const prev = document.getElementById('news-prev');
+        const next = document.getElementById('news-next');
+        let index = 0;
+
+        function showSlide() {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        prev.addEventListener('click', () => {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide();
+        });
+
+        next.addEventListener('click', () => {
+            index = (index + 1) % slides.length;
+            showSlide();
+        });
+
+        showSlide();
+    });
+</script>
+
+{% endblock %}

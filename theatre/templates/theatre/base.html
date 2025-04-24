@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Театр{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'theatre/style.css' %}">
+</head>
+<body>
+
+<header class="top-header">
+    <div class="header-top">
+        <a href="#">English</a>
+        <a href="#">Бутик</a>
+        <a href="#">Рассылка</a>
+        <a href="#">Видеоархив</a>
+        <a href="#">Для прессы</a>
+    </div>
+
+    <nav class="main-menu-centered">
+        <a href="/">Главная</a>
+        <a href="/performances/">Репертуар</a>
+        <a href="/actors/">О театре</a>
+        <a href="/reservations/">Билеты</a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <p>&copy; 2025 Театр</p>
+</footer>
+
+</body>
+</html>
