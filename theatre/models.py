@@ -29,6 +29,13 @@ class Performance(models.Model):
     theatre_hall = models.ForeignKey(TheatreHall, on_delete=models.CASCADE)
     show_time = models.DateTimeField()
 
+class Performance(models.Model):
+    title = models.CharField(max_length=200)
+    show_time = models.DateTimeField()
+    description = models.TextField(blank=True)
+    category = models.CharField(max_length=100, blank=True)
+
+
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,7 +43,19 @@ class Reservation(models.Model):
 
 
 class Ticket(models.Model):
+    STATUS_CHOICES = [
+        ('available', 'Available'),
+        ('reserved', 'Reserved'),
+        ('purchased', 'Purchased'),
+    ]
+
     row = models.IntegerField()
     seat = models.IntegerField()
     performance = models.ForeignKey(Performance, on_delete=models.CASCADE)
-    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE, related_name="tickets")
+    reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE, related_name="tickets", null=True, blank=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='available')
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.0)
+
+    def __str__(self):
+        return f"Ticket for {self.performance.play.title} - Row {self.row} Seat {self.seat} ({self.status})"
+
