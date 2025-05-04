@@ -1,0 +1,14 @@
+<!-- templates/reservations.html -->
+<h1>Ваши бронирования</h1>
+
+{% if reservations %}
+    <ul>
+        {% for reservation in reservations %}
+            <li>
+                Спектакль: {{ reservation.performance.play.title }} - Статус: {{ reservation.status }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>У вас нет активных бронирований.</p>
+{% endif %}
