@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<!-- ===== Верхний Слайдер ===== -->
+<!-- ===== Top Slider ===== -->
 <div class="hero-slider">
     <div class="slides-wrapper top-slides">
         <div class="slide" style="background-image: url('{% static 'image/slide1.webp' %}');"></div>
@@ -22,7 +22,7 @@
     <div class="slider-arrow right top-arrow">&#10095;</div>
 </div>
 
-<!-- ===== БАННЕР ФОН + НОВОСТИ ===== -->
+<!-- ===== BANNER BACKGROUND + NEWS ===== -->
 <section class="news-banner" style="background-image: url('{% static 'image/featured-bg.webp' %}');">
     <div class="news-banner-overlay"></div>
 
@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <!-- Стрелки -->
+            <!-- Arrows -->
             <div class="news-arrow left" id="news-prev">&#10094;</div>
             <div class="news-arrow right" id="news-next">&#10095;</div>
         </div>
@@ -110,10 +110,9 @@
     }
 </style>
 
-<!-- ===== JS Слайдеры ===== -->
+<!-- ===== JS Sliders ===== -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Верхний слайдер
         const topWrapper = document.querySelector('.top-slides');
         const topSlides = document.querySelectorAll('.top-slides .slide');
         const topLeftArrow = document.querySelector('.slider-arrow.left.top-arrow');
@@ -153,7 +152,7 @@
         topInterval = setInterval(nextTopSlide, 6000);
     });
 
-    // Слайдер новостей
+    // News Slider
     document.addEventListener("DOMContentLoaded", () => {
         const carousel = document.getElementById('news-carousel');
         const slides = document.querySelectorAll('.news-slide');

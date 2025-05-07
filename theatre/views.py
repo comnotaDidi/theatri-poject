@@ -7,6 +7,5 @@ from rest_framework import viewsets
 from .models import Actor
 from django.views import View
 
-# Главная страница
 def home(request):
     return render(request, 'theatre/home.html')

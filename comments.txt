@@ -1,0 +1,223 @@
+./.git/hooks/applypatch-msg.sample:# An example hook script to check the commit log message taken by
+./.git/hooks/applypatch-msg.sample:# applypatch from an e-mail message.
+./.git/hooks/applypatch-msg.sample:# The hook should exit with non-zero status after issuing an
+./.git/hooks/applypatch-msg.sample:# appropriate message if it wants to stop the commit.  The hook is
+./.git/hooks/applypatch-msg.sample:# allowed to edit the commit message file.
+./.git/hooks/applypatch-msg.sample:# To enable this hook, rename this file to "applypatch-msg".
+./.git/hooks/commit-msg.sample:# An example hook script to check the commit log message.
+./.git/hooks/commit-msg.sample:# Called by "git commit" with one argument, the name of the file
+./.git/hooks/commit-msg.sample:# that has the commit message.  The hook should exit with non-zero
+./.git/hooks/commit-msg.sample:# status after issuing an appropriate message if it wants to stop the
+./.git/hooks/commit-msg.sample:# commit.  The hook is allowed to edit the commit message file.
+./.git/hooks/commit-msg.sample:# To enable this hook, rename this file to "commit-msg".
+./.git/hooks/commit-msg.sample:# Uncomment the below to add a Signed-off-by line to the message.
+./.git/hooks/commit-msg.sample:# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+./.git/hooks/commit-msg.sample:# hook is more suited to it.
+./.git/hooks/commit-msg.sample:# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+./.git/hooks/commit-msg.sample:# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+./.git/hooks/commit-msg.sample:# This example catches duplicate Signed-off-by lines.
+./.git/hooks/fsmonitor-watchman.sample:# An example hook script to integrate Watchman
+./.git/hooks/fsmonitor-watchman.sample:# (https://facebook.github.io/watchman/) with git to speed up detecting
+./.git/hooks/fsmonitor-watchman.sample:# new and modified files.
+./.git/hooks/fsmonitor-watchman.sample:# The hook is passed a version (currently 2) and last update token
+./.git/hooks/fsmonitor-watchman.sample:# formatted as a string and outputs to stdout a new update token and
+./.git/hooks/fsmonitor-watchman.sample:# all files that have been modified since the update token. Paths must
+./.git/hooks/fsmonitor-watchman.sample:# be relative to the root of the working tree and separated by a single NUL.
+./.git/hooks/fsmonitor-watchman.sample:# To enable this hook, rename this file to "query-watchman" and set
+./.git/hooks/fsmonitor-watchman.sample:# 'git config core.fsmonitor .git/hooks/query-watchman'
+./.git/hooks/fsmonitor-watchman.sample:# Uncomment for debugging
+./.git/hooks/fsmonitor-watchman.sample:# print STDERR "$0 $version $last_update_token\n";
+./.git/hooks/fsmonitor-watchman.sample:# Check the hook interface version
+./.git/hooks/post-update.sample:# An example hook script to prepare a packed repository for use over
+./.git/hooks/post-update.sample:# dumb transports.
+./.git/hooks/post-update.sample:# To enable this hook, rename this file to "post-update".
+./.git/hooks/pre-applypatch.sample:# An example hook script to verify what is about to be committed
+./.git/hooks/pre-applypatch.sample:# by applypatch from an e-mail message.
+./.git/hooks/pre-applypatch.sample:# The hook should exit with non-zero status after issuing an
+./.git/hooks/pre-applypatch.sample:# appropriate message if it wants to stop the commit.
+./.git/hooks/pre-applypatch.sample:# To enable this hook, rename this file to "pre-applypatch".
+./.git/hooks/pre-commit.sample:# An example hook script to verify what is about to be committed.
+./.git/hooks/pre-commit.sample:# Called by "git commit" with no arguments.  The hook should
+./.git/hooks/pre-commit.sample:# exit with non-zero status after issuing an appropriate message if
+./.git/hooks/pre-commit.sample:# it wants to stop the commit.
+./.git/hooks/pre-commit.sample:# To enable this hook, rename this file to "pre-commit".
+./.git/hooks/pre-commit.sample:# If you want to allow non-ASCII filenames set this variable to true.
+./.git/hooks/pre-commit.sample:# Redirect output to stderr.
+./.git/hooks/pre-commit.sample:# Cross platform projects tend to avoid non-ASCII filenames; prevent
+./.git/hooks/pre-commit.sample:# them from being added to the repository. We exploit the fact that the
+./.git/hooks/pre-commit.sample:# printable range starts at the space character and ends with tilde.
+./.git/hooks/pre-commit.sample:# If there are whitespace errors, print the offending file names and fail.
+./.git/hooks/pre-merge-commit.sample:# An example hook script to verify what is about to be committed.
+./.git/hooks/pre-merge-commit.sample:# Called by "git merge" with no arguments.  The hook should
+./.git/hooks/pre-merge-commit.sample:# exit with non-zero status after issuing an appropriate message to
+./.git/hooks/pre-merge-commit.sample:# stderr if it wants to stop the merge commit.
+./.git/hooks/pre-merge-commit.sample:# To enable this hook, rename this file to "pre-merge-commit".
+./.git/hooks/pre-push.sample:# An example hook script to verify what is about to be pushed.  Called by "git
+./.git/hooks/pre-push.sample:# push" after it has checked the remote status, but before anything has been
+./.git/hooks/pre-push.sample:# pushed.  If this script exits with a non-zero status nothing will be pushed.
+./.git/hooks/pre-push.sample:# This hook is called with the following parameters:
+./.git/hooks/pre-push.sample:# $1 -- Name of the remote to which the push is being done
+./.git/hooks/pre-push.sample:# $2 -- URL to which the push is being done
+./.git/hooks/pre-push.sample:# If pushing without using a named remote those arguments will be equal.
+./.git/hooks/pre-push.sample:# Information about the commits which are being pushed is supplied as lines to
+./.git/hooks/pre-push.sample:# the standard input in the form:
+./.git/hooks/pre-push.sample:#   <local ref> <local oid> <remote ref> <remote oid>
+./.git/hooks/pre-push.sample:# This sample shows how to prevent push of commits where the log message starts
+./.git/hooks/pre-push.sample:# with "WIP" (work in progress).
+./.git/hooks/pre-rebase.sample:# Copyright (c) 2006, 2008 Junio C Hamano
+./.git/hooks/pre-rebase.sample:# The "pre-rebase" hook is run just before "git rebase" starts doing
+./.git/hooks/pre-rebase.sample:# its job, and can prevent the command from running by exiting with
+./.git/hooks/pre-rebase.sample:# non-zero status.
+./.git/hooks/pre-rebase.sample:# The hook is called with the following parameters:
+./.git/hooks/pre-rebase.sample:# $1 -- the upstream the series was forked from.
+./.git/hooks/pre-rebase.sample:# $2 -- the branch being rebased (or empty when rebasing the current branch).
+./.git/hooks/pre-rebase.sample:# This sample shows how to prevent topic branches that are already
+./.git/hooks/pre-rebase.sample:# merged to 'next' branch from getting rebased, because allowing it
+./.git/hooks/pre-rebase.sample:# would result in rebasing already published history.
+./.git/hooks/pre-rebase.sample:# Now we are dealing with a topic branch being rebased
+./.git/hooks/pre-rebase.sample:# on top of master.  Is it OK to rebase it?
+./.git/hooks/pre-rebase.sample:# Does the topic really exist?
+./.git/hooks/pre-rebase.sample:# Is topic fully merged to master?
+./.git/hooks/pre-rebase.sample:# Is topic ever merged to next?  If so you should not be rebasing it.
+./.git/hooks/pre-receive.sample:# An example hook script to make use of push options.
+./.git/hooks/pre-receive.sample:# The example simply echoes all push options that start with 'echoback='
+./.git/hooks/pre-receive.sample:# and rejects all pushes when the "reject" push option is used.
+./.git/hooks/pre-receive.sample:# To enable this hook, rename this file to "pre-receive".
+./.git/hooks/prepare-commit-msg.sample:# An example hook script to prepare the commit log message.
+./.git/hooks/prepare-commit-msg.sample:# Called by "git commit" with the name of the file that has the
+./.git/hooks/prepare-commit-msg.sample:# commit message, followed by the description of the commit
+./.git/hooks/prepare-commit-msg.sample:# message's source.  The hook's purpose is to edit the commit
+./.git/hooks/prepare-commit-msg.sample:# message file.  If the hook fails with a non-zero status,
+./.git/hooks/prepare-commit-msg.sample:# the commit is aborted.
+./.git/hooks/prepare-commit-msg.sample:# To enable this hook, rename this file to "prepare-commit-msg".
+./.git/hooks/prepare-commit-msg.sample:# This hook includes three examples. The first one removes the
+./.git/hooks/prepare-commit-msg.sample:# "# Please enter the commit message..." help message.
+./.git/hooks/prepare-commit-msg.sample:# The second includes the output of "git diff --name-status -r"
+./.git/hooks/prepare-commit-msg.sample:# into the message, just before the "git status" output.  It is
+./.git/hooks/prepare-commit-msg.sample:# commented because it doesn't cope with --amend or with squashed
+./.git/hooks/prepare-commit-msg.sample:# commits.
+./.git/hooks/prepare-commit-msg.sample:# The third example adds a Signed-off-by line to the message, that can
+./.git/hooks/prepare-commit-msg.sample:# still be edited.  This is rarely a good idea.
+./.git/hooks/prepare-commit-msg.sample:# case "$COMMIT_SOURCE,$SHA1" in
+./.git/hooks/prepare-commit-msg.sample:#  ,|template,)
+./.git/hooks/prepare-commit-msg.sample:#    /usr/bin/perl -i.bak -pe '
+./.git/hooks/prepare-commit-msg.sample:#       print "\n" . `git diff --cached --name-status -r`
+./.git/hooks/prepare-commit-msg.sample:# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+./.git/hooks/prepare-commit-msg.sample:#  *) ;;
+./.git/hooks/prepare-commit-msg.sample:# esac
+./.git/hooks/prepare-commit-msg.sample:# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+./.git/hooks/prepare-commit-msg.sample:# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+./.git/hooks/prepare-commit-msg.sample:# if test -z "$COMMIT_SOURCE"
+./.git/hooks/prepare-commit-msg.sample:# then
+./.git/hooks/prepare-commit-msg.sample:#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+./.git/hooks/prepare-commit-msg.sample:# fi
+./.git/hooks/push-to-checkout.sample:# An example hook script to update a checked-out tree on a git push.
+./.git/hooks/push-to-checkout.sample:# This hook is invoked by git-receive-pack(1) when it reacts to git
+./.git/hooks/push-to-checkout.sample:# push and updates reference(s) in its repository, and when the push
+./.git/hooks/push-to-checkout.sample:# tries to update the branch that is currently checked out and the
+./.git/hooks/push-to-checkout.sample:# receive.denyCurrentBranch configuration variable is set to
+./.git/hooks/push-to-checkout.sample:# updateInstead.
+./.git/hooks/push-to-checkout.sample:# By default, such a push is refused if the working tree and the index
+./.git/hooks/push-to-checkout.sample:# of the remote repository has any difference from the currently
+./.git/hooks/push-to-checkout.sample:# checked out commit; when both the working tree and the index match
+./.git/hooks/push-to-checkout.sample:# the current commit, they are updated to match the newly pushed tip
+./.git/hooks/push-to-checkout.sample:# of the branch. This hook is to be used to override the default
+./.git/hooks/push-to-checkout.sample:# behaviour; however the code below reimplements the default behaviour
+./.git/hooks/push-to-checkout.sample:# as a starting point for convenient modification.
+./.git/hooks/push-to-checkout.sample:# The hook receives the commit with which the tip of the current
+./.git/hooks/push-to-checkout.sample:# branch is going to be updated:
+./.git/hooks/push-to-checkout.sample:# It can exit with a non-zero status to refuse the push (when it does
+./.git/hooks/push-to-checkout.sample:# so, it must not modify the index or the working tree).
+./.git/hooks/push-to-checkout.sample:# Or it can make any necessary changes to the working tree and to the
+./.git/hooks/push-to-checkout.sample:# index to bring them to the desired state when the tip of the current
+./.git/hooks/push-to-checkout.sample:# branch is updated to the new commit, and exit with a zero status.
+./.git/hooks/push-to-checkout.sample:# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+./.git/hooks/push-to-checkout.sample:# in order to emulate git fetch that is run in the reverse direction
+./.git/hooks/push-to-checkout.sample:# with git push, as the two-tree form of git read-tree -u -m is
+./.git/hooks/push-to-checkout.sample:# essentially the same as git switch or git checkout that switches
+./.git/hooks/push-to-checkout.sample:# branches while keeping the local changes in the working tree that do
+./.git/hooks/push-to-checkout.sample:# not interfere with the difference between the branches.
+./.git/hooks/push-to-checkout.sample:# The below is a more-or-less exact translation to shell of the C code
+./.git/hooks/push-to-checkout.sample:# for the default behaviour for git's push-to-checkout hook defined in
+./.git/hooks/push-to-checkout.sample:# the push_to_deploy() function in builtin/receive-pack.c.
+./.git/hooks/push-to-checkout.sample:# Note that the hook will be executed from the repository directory,
+./.git/hooks/push-to-checkout.sample:# not from the working tree, so if you want to perform operations on
+./.git/hooks/push-to-checkout.sample:# the working tree, you will have to adapt your code accordingly, e.g.
+./.git/hooks/push-to-checkout.sample:# by adding "cd .." or using relative paths.
+./.git/hooks/push-to-checkout.sample:# This is a rough translation of:
+./.git/hooks/push-to-checkout.sample:#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+./.git/hooks/sendemail-validate.sample:# An example hook script to validate a patch (and/or patch series) before
+./.git/hooks/sendemail-validate.sample:# sending it via email.
+./.git/hooks/sendemail-validate.sample:# The hook should exit with non-zero status after issuing an appropriate
+./.git/hooks/sendemail-validate.sample:# message if it wants to prevent the email(s) from being sent.
+./.git/hooks/sendemail-validate.sample:# To enable this hook, rename this file to "sendemail-validate".
+./.git/hooks/sendemail-validate.sample:# By default, it will only check that the patch(es) can be applied on top of
+./.git/hooks/sendemail-validate.sample:# the default upstream branch without conflicts in a secondary worktree. After
+./.git/hooks/sendemail-validate.sample:# validation (successful or not) of the last patch of a series, the worktree
+./.git/hooks/sendemail-validate.sample:# will be deleted.
+./.git/hooks/sendemail-validate.sample:# The following config variables can be set to change the default remote and
+./.git/hooks/sendemail-validate.sample:# remote ref that are used to apply the patches against:
+./.git/hooks/sendemail-validate.sample:#   sendemail.validateRemote (default: origin)
+./.git/hooks/sendemail-validate.sample:#   sendemail.validateRemoteRef (default: HEAD)
+./.git/hooks/sendemail-validate.sample:# Replace the TODO placeholders with appropriate checks according to your
+./.git/hooks/sendemail-validate.sample:# needs.
+./.git/hooks/sendemail-validate.sample:# main -------------------------------------------------------------------------
+./.git/hooks/update.sample:# An example hook script to block unannotated tags from entering.
+./.git/hooks/update.sample:# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+./.git/hooks/update.sample:# To enable this hook, rename this file to "update".
+./.git/hooks/update.sample:# Config
+./.git/hooks/update.sample:# ------
+./.git/hooks/update.sample:# hooks.allowunannotated
+./.git/hooks/update.sample:#   This boolean sets whether unannotated tags will be allowed into the
+./.git/hooks/update.sample:#   repository.  By default they won't be.
+./.git/hooks/update.sample:# hooks.allowdeletetag
+./.git/hooks/update.sample:#   This boolean sets whether deleting tags will be allowed in the
+./.git/hooks/update.sample:#   repository.  By default they won't be.
+./.git/hooks/update.sample:# hooks.allowmodifytag
+./.git/hooks/update.sample:#   This boolean sets whether a tag may be modified after creation. By default
+./.git/hooks/update.sample:#   it won't be.
+./.git/hooks/update.sample:# hooks.allowdeletebranch
+./.git/hooks/update.sample:#   This boolean sets whether deleting branches will be allowed in the
+./.git/hooks/update.sample:#   repository.  By default they won't be.
+./.git/hooks/update.sample:# hooks.denycreatebranch
+./.git/hooks/update.sample:#   This boolean sets whether remotely creating branches will be denied
+./.git/hooks/update.sample:#   in the repository.  By default this is allowed.
+./.git/hooks/update.sample:# --- Command line
+./.git/hooks/update.sample:# --- Safety check
+./.git/hooks/update.sample:# --- Config
+./.git/hooks/update.sample:# check for no description
+./.git/hooks/update.sample:# --- Check types
+./.git/hooks/update.sample:# if $newrev is 0000...0000, it's a commit to delete a ref.
+./.git/hooks/update.sample:# --- Finished
+./.git/info/exclude:# git ls-files --others --exclude-from=.git/info/exclude
+./.git/info/exclude:# Lines that start with '#' are comments.
+./.git/info/exclude:# For a project mostly in C, the following would be a good set of
+./.git/info/exclude:# exclude patterns (uncomment them if you want to use them):
+./.git/info/exclude:# *.[oa]
+./.git/info/exclude:# *~
+./Dockerfile:# Base Python image
+./Dockerfile:# Set the working directory inside the container
+./Dockerfile:# Copy the requirements file into the container
+./Dockerfile:# Install dependencies
+./Dockerfile:# Copy all project files into the container
+./Dockerfile:# Set environment variables so Python doesn't write bytecode and output isn't buffered
+./Dockerfile:# Run the Django server (port 8000)
+./README.md:# 🎭 Theatre Project
+./theatre/migrations/0001_initial.py:# Generated by Django 5.1.2 on 2025-04-14 16:08
+./theatre/tests.py:# Create your tests here.
+./theatre/urls.py:# Создаем роутер для API
+./theatre/urls.py:# Регистрируем API ViewSets
+./theatre/urls.py:# router.register(r'actors', ActorViewSet)
+./theatre/urls.py:# router.register(r'plays', PlayViewSet)
+./theatre/urls.py:# router.register(r'halls', TheatreHallViewSet)
+./theatre/urls.py:# router.register(r'performances', PerformanceViewSet)
+./theatre/urls.py:# router.register(r'reservations', ReservationViewSet)
+./theatre/urls.py:# router.register(r'tickets', TicketViewSet)
+./theatre/urls.py:# Документация API
+./theatre/urls.py:# Добавляем путь для документации Swagger
+./theatre/views.py:# Главная страница
+./theatre_project/settings.py:# ✅ Установленные приложения
+./theatre_project/settings.py:# ✅ Middleware
+./theatre_project/settings.py:# ✅ Templates (без лишнего!)
+./theatre_project/settings.py:# ✅ REST Framework настройки
+./theatre_project/settings.py:# ✅ Валидаторы пароля

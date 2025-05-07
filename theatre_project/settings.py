@@ -9,7 +9,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# ✅ Установленные приложения
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -18,11 +17,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',     # REST API
-    'drf_yasg',           # Swagger (если используешь)
-    'theatre',            # Твое приложение
+    'drf_yasg',           # Swagger
+    'theatre',            
 ]
 
-# ✅ Middleware
+# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -35,7 +34,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'theatre_project.urls'
 
-# ✅ Templates (без лишнего!)
+# Templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -61,14 +60,14 @@ DATABASES = {
     }
 }
 
-# ✅ REST Framework настройки
+# REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
-# ✅ Валидаторы пароля
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
