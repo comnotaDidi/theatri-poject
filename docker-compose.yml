@@ -1,0 +1,11 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"  # Proxy for local port 8000
+    volumes:
+      - .:/app  # Mount the current folder into the container
+    env_file:
+      - .env  # Read environment variables from the .env file

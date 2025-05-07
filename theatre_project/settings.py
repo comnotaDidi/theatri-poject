@@ -1,8 +1,9 @@
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-i2mf^-_edq)u3lgnpfpvji-%by0_0a(m)$e11@1wk@-mt(b@4$'
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 DEBUG = True
 
@@ -53,7 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'theatre_project.wsgi.application'
 
-# ✅ База данных
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
