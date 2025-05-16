@@ -1,14 +1,31 @@
 from pathlib import Path
 import os
+from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
 
+# Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+# Function to retrieve environment variables safely
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        raise ImproperlyConfigured(f"Set the {var_name} environment variable.")
 
+# Load environment variables from a .env file
+load_dotenv()
+
+# Secret key from environment
+SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
+
+# Debug mode (should be False in production)
 DEBUG = True
 
+# Allowed hosts for the application
 ALLOWED_HOSTS = []
 
+# Installed applications
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -17,11 +34,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',     # REST API
-    'drf_yasg',           # Swagger
-    'theatre',            
+    'drf_yasg',           # Swagger documentation
+    'theatre',            # Your custom app
 ]
 
-# Middleware
+# Middleware configuration
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -32,13 +49,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# URL configuration
 ROOT_URLCONF = 'theatre_project.urls'
 
-# Templates
+# Templates configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [],  # You can add your template directories here
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,8 +69,10 @@ TEMPLATES = [
     },
 ]
 
+# WSGI application
 WSGI_APPLICATION = 'theatre_project.wsgi.application'
 
+# Database configuration (SQLite by default)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -60,14 +80,14 @@ DATABASES = {
     }
 }
 
-# REST Framework
+# Django REST Framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
-
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -83,14 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Localization settings
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
 USE_TZ = True
 
+# Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

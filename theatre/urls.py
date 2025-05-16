@@ -8,7 +8,7 @@ from rest_framework import permissions
 
 router = DefaultRouter()
 
-# Регистрируем API ViewSets
+# Registering API ViewSets
 # router.register(r'actors', ActorViewSet)
 # router.register(r'plays', PlayViewSet)
 # router.register(r'halls', TheatreHallViewSet)
