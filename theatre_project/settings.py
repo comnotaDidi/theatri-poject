@@ -17,7 +17,12 @@ def get_env_variable(var_name):
 load_dotenv()
 
 # Secret key from environment
-SECRET_KEY = get_env_variable("DJANGO_SECRET_KEY")
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+if not SECRET_KEY:
+    raise ValueError("SECRET_KEY is not set in environment variables.")
 
 # Debug mode (should be False in production)
 DEBUG = True
